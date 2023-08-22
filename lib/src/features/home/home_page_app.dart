@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:meals_2023/src/core/widgets/main_drawer.dart';
-import 'package:meals_2023/src/features/categories/categories_screen.dart';
-import 'package:meals_2023/src/features/favorite/favorite_screen.dart';
+import 'package:meals_2023/src/core/widgets/drawer_widget.dart';
+import 'package:meals_2023/src/features/home/widgets/favorite_meal_widget.dart';
+import 'package:meals_2023/src/features/home/widgets/gridview_categories_widget.dart';
 
-class TabsScreen extends StatefulWidget {
-  const TabsScreen({Key? key}) : super(key: key);
+//import 'package:meals_2023/src/features/favorite/favorite_screen.dart';
+
+
+class HomePageApp extends StatefulWidget {
+  const HomePageApp({Key? key}) : super(key: key);
 
   @override
-  State<TabsScreen> createState() => _TabsScreenState();
+  State<HomePageApp> createState() => _TabsScreenState();
 }
 
-class _TabsScreenState extends State<TabsScreen> {
+class _TabsScreenState extends State<HomePageApp> {
   int _selectedScreenIndex = 0;
 
   final List<Map<String, Object>> _screens = [
-    {'title': 'Lista de Categorias', 'screen': const CategoriesScreen()},
-    {'title': 'Meus Favoritos', 'screen': const FavoriteScreen()},
+    {'title': 'Lista de Categorias', 'screen': const GridViewCategoriesWidget()},
+    {'title': 'Meus Favoritos', 'screen': const FavoriteMealWidget()},
   ];
 
   _selectScreen(int index) {
@@ -32,7 +35,7 @@ class _TabsScreenState extends State<TabsScreen> {
           _screens[_selectedScreenIndex]['title'] as String,
         ),
       ),
-      drawer: const MainDrawer(),
+      drawer: const DrawerWidget(),
       body: _screens[_selectedScreenIndex]['screen'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectScreen,

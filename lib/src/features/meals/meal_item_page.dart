@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:meals_2023/src/core/utls/app_routes.dart';
 import 'package:meals_2023/src/models/meal.dart';
 
-class MealItem extends StatelessWidget {
+class MealItemPage extends StatelessWidget {
   final Meal meal;
 
-  const MealItem(this.meal, {Key? key}) : super(key: key);
+  const MealItemPage(this.meal, {Key? key}) : super(key: key);
 
   void _selectMeal(BuildContext context) {
     Navigator.of(context)
@@ -15,8 +15,7 @@ class MealItem extends StatelessWidget {
     )
         .then((result) {
       if (result == null) {
-      } else {
-      }
+      } else {}
     });
   }
 
@@ -70,25 +69,25 @@ class MealItem extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Row(
+                  Column(
                     children: [
                       const Icon(Icons.schedule),
-                      const SizedBox(width: 6),
                       Text('${meal.duration} min'),
                     ],
                   ),
-                  Row(
+                  const SizedBox(width: 6),
+                  Column(
                     children: [
                       const Icon(Icons.work),
-                      const SizedBox(width: 6),
                       Text(meal.complexityText),
                     ],
                   ),
-                  Row(
+                  const SizedBox(width: 6),
+                  Column(
                     children: [
                       const Icon(Icons.attach_money),
                       const SizedBox(width: 6),

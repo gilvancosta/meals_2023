@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meals_2023/src/models/meal.dart';
 
-class MealDetailScreen extends StatelessWidget {
-  const MealDetailScreen({Key? key}) : super(key: key);
+class MealDetailPage extends StatelessWidget {
+  const MealDetailPage({Key? key}) : super(key: key);
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Container(

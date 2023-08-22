@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meals_2023/src/core/data/dummy_data.dart';
-import 'package:meals_2023/src/core/widgets/category_item.dart';
+import 'package:meals_2023/src/features/home/widgets/category_item_widget.dart';
 
-class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+class GridViewCategoriesWidget extends StatelessWidget {
+  const GridViewCategoriesWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CategoriesScreen extends StatelessWidget {
         mainAxisSpacing: 20,
       ),
       children: dummyCategories.map((cat) {
-        return CategoryItem(cat);
+        return CategoryItemWidget(cat);
       }).toList(),
     );
   }

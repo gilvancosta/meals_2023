@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:meals_2023/src/core/widgets/main_drawer.dart';
+import 'package:meals_2023/src/core/widgets/drawer_widget.dart';
 import 'package:meals_2023/src/models/settings.dart';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsPage extends StatefulWidget {
   final Settings settings;
   final Function(Settings) onSettingsChanged;
 
-  const SettingsScreen(this.settings, this.onSettingsChanged, {Key? key}) : super(key: key);
+  const SettingsPage(this.settings, this.onSettingsChanged, {Key? key}) : super(key: key);
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
+  State<SettingsPage> createState() => _SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class _SettingsScreenState extends State<SettingsPage> {
   Settings? settings;
 
   @override
@@ -44,7 +44,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         title: const Text('Configurações'),
       ),
-      drawer: const MainDrawer(),
+      drawer: const DrawerWidget(),
       body: Column(
         children: [
           Container(
