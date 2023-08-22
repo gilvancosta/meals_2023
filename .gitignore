@@ -42,3 +42,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# ignore file
+Z_CODIGO_BKP.md
+Z_INSTRUCOES.md
+Z_SHORTCUTs.md
