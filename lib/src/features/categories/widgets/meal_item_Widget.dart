@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:meals_2023/src/core/utls/app_routes.dart';
 import 'package:meals_2023/src/models/meal.dart';
 
-class MealItemPage extends StatelessWidget {
+class MealItemWidget extends StatelessWidget {
   final Meal meal;
 
-  const MealItemPage(this.meal, {Key? key}) : super(key: key);
+  const MealItemWidget(this.meal, {Key? key}) : super(key: key);
 
   void _selectMeal(BuildContext context) {
     Navigator.of(context)
@@ -31,8 +31,10 @@ class MealItemPage extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         child: Column(
           children: [
+            // é adicionado uma stack para que a imagem fique por cima do texto
             Stack(
               children: [
+                //o ClipRRect garante que a imagem não ultrapasse os limites do card
                 ClipRRect(
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(15),
@@ -45,6 +47,7 @@ class MealItemPage extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
+                //o Positioned permite posicionar um widget em um lugar específico
                 Positioned(
                   bottom: 20,
                   right: 10,

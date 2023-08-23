@@ -52,20 +52,30 @@ class MealDetailPage extends StatelessWidget {
             ),
             _createSectionTitle(context, 'Ingredientes'),
             _createSectionContainer(
-              ListView.builder(
-                itemCount: meal.ingredients.length,
-                itemBuilder: (ctx, index) {
-                  return Card(
-                    color: Theme.of(context).colorScheme.secondary,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 5,
-                        horizontal: 10,
+              Scrollbar(
+                //colocar direção vertical do scroll
+                controller: ScrollController(
+                  initialScrollOffset: 0,
+                  keepScrollOffset: true,
+                ),
+                thumbVisibility: true,
+                trackVisibility: true,
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: meal.ingredients.length,
+                  itemBuilder: (ctx, index) {
+                    return Card(
+                      color: Theme.of(context).colorScheme.secondary,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 5,
+                          horizontal: 10,
+                        ),
+                        child: Text(meal.ingredients[index]),
                       ),
-                      child: Text(meal.ingredients[index]),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
             _createSectionTitle(context, 'Passos'),

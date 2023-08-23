@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:meals_2023/src/features/home/home_page_app.dart';
 import 'package:meals_2023/src/features/categories/categories_meals_page.dart';
 import 'package:meals_2023/src/features/meals/meal_detail_page.dart';
-import 'package:meals_2023/src/features/categories/settings/categorie_settings_page.dart';
+import 'package:meals_2023/src/features/settings/categorie_settings_page.dart';
 
 
 import 'package:meals_2023/src/core/data/dummy_data.dart';

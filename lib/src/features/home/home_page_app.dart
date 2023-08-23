@@ -5,7 +5,6 @@ import 'package:meals_2023/src/features/home/widgets/gridview_categories_widget.
 
 //import 'package:meals_2023/src/features/favorite/favorite_screen.dart';
 
-
 class HomePageApp extends StatefulWidget {
   const HomePageApp({Key? key}) : super(key: key);
 
@@ -17,8 +16,14 @@ class _TabsScreenState extends State<HomePageApp> {
   int _selectedScreenIndex = 0;
 
   final List<Map<String, Object>> _screens = [
-    {'title': 'Lista de Categorias', 'screen': const GridViewCategoriesWidget()},
-    {'title': 'Meus Favoritos', 'screen': const FavoriteMealWidget()},
+    {
+      'title': 'Vamos Cozinhar?',
+      'screen': const GridViewCategoriesWidget(),
+    },
+    {
+      'title': 'Meus Favoritos',
+      'screen': const FavoriteMealWidget(),
+    },
   ];
 
   _selectScreen(int index) {
