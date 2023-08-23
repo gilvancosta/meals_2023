@@ -21,9 +21,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Settings settings = Settings();
 
+  Settings settings = Settings();
   List<Meal> _availableMeals = dummyMeals;
+  final List<Meal> _favoriteMeals = [];
+  
+
+
 
   void _filterMeals(Settings settings) {
     setState(() {
@@ -39,6 +43,17 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _toggleFavorite(Meal meal) {
+    setState(() {
+      _favoriteMeals.contains(meal) ? _favoriteMeals.remove(meal) : _favoriteMeals.add(meal);
+    });
+  }
+
+ bool _isFavotite(Meal meal) {
+    return _favoriteMeals.contains(meal);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,9 +61,9 @@ class _MyAppState extends State<MyApp> {
       theme: MyAppTheme.themeData,
       initialRoute: AppRoutes.home,
       routes: {
-        AppRoutes.home: (ctx) => const HomePageApp(),
+        AppRoutes.home: (ctx) =>  HomePageApp(favoriteMeals: _favoriteMeals),
         AppRoutes.categoriesMeals: (ctx) => CategoriesMealsPage(_availableMeals),
-        AppRoutes.mealDetail: (ctx) => const MealDetailPage(),
+        AppRoutes.mealDetail: (ctx) =>  MealDetailPage(onToggleFavorite: _toggleFavorite, isFavotite: _isFavotite),
         AppRoutes.settings: (ctx) => SettingsPage(settings, _filterMeals),
       },
       onGenerateRoute: (settings) {
@@ -58,14 +73,14 @@ class _MyAppState extends State<MyApp> {
           return null;
         } else {
           return MaterialPageRoute(builder: (_) {
-            return const HomePageApp();
+            return HomePageApp(favoriteMeals: _favoriteMeals);
           });
         }
       },
       // funciona tipo fosse uma página 404
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (_) {
-          return const HomePageApp();
+          return HomePageApp(favoriteMeals: _favoriteMeals);
         });
       },
     );

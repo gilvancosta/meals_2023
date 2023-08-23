@@ -1,12 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:meals_2023/src/core/widgets/drawer_widget.dart';
-import 'package:meals_2023/src/features/fevorite/favorite_meal_page.dart';
 import 'package:meals_2023/src/features/categories/widgets/gridview_categories_widget.dart';
+import 'package:meals_2023/src/features/fevorite/favorite_meal_page.dart';
+import 'package:meals_2023/src/models/meal.dart';
 
 //import 'package:meals_2023/src/features/favorite/favorite_screen.dart';
 
 class HomePageApp extends StatefulWidget {
-  const HomePageApp({Key? key}) : super(key: key);
+  final List<Meal> favoriteMeals;
+
+  const HomePageApp({
+    Key? key,
+    required this.favoriteMeals,
+  }) : super(key: key);
 
   @override
   State<HomePageApp> createState() => _TabsScreenState();
@@ -15,16 +23,18 @@ class HomePageApp extends StatefulWidget {
 class _TabsScreenState extends State<HomePageApp> {
   int _selectedScreenIndex = 0;
 
-  final List<Map<String, Object>> _screens = [
-    {
-      'title': 'Lista de Categorias',
-      'screen': const GridViewCategoriesWidget(),
-    },
-    {
-      'title': 'Meus Favoritos',
-      'screen': const FavoriteMealPage(),
-    },
-  ];
+  List<Map<String, Object>> _screens = [];
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      {'title': 'Lista de Categorias', 'screen': const GridViewCategoriesWidget()},
+      {'title': 'Meus Favoritos', 'screen': FavoriteMealPage(favoriteMeals: widget.favoriteMeals)},
+    ];
+  }
 
   _selectScreen(int index) {
     setState(() {

@@ -1,8 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:meals_2023/src/models/meal.dart';
 
 class MealDetailPage extends StatelessWidget {
-  const MealDetailPage({Key? key}) : super(key: key);
+  final Function(Meal) onToggleFavorite;
+  final bool Function(Meal)  isFavotite;
+
+  const MealDetailPage({
+    Key? key,
+    required this.onToggleFavorite,
+    required this.isFavotite,
+  }) : super(key: key);
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Container(
@@ -16,7 +25,7 @@ class MealDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _createSectionContainer(Widget child_Scrollbar) {
+  Widget _createSectionContainer(Widget childScrollbar) {
     return Container(
       width: 330,
       height: 200,
@@ -27,7 +36,7 @@ class MealDetailPage extends StatelessWidget {
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: child_Scrollbar,
+      child: childScrollbar,
     );
   }
 
@@ -99,9 +108,11 @@ class MealDetailPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.star),
+        child:  Icon(isFavotite(meal) ? Icons.star : Icons.star_border),
         onPressed: () {
-          Navigator.of(context).pop(meal.title);
+          onToggleFavorite(meal);
+
+          // Navigator.of(context).pop(meal.title);
         },
       ),
     );
