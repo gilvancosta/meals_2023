@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_2023/src/core/data/dummy_data.dart';
-import 'package:meals_2023/src/features/home/widgets/category_item_widget.dart';
+import 'package:meals_2023/src/features/categories/widgets/category_item_widget.dart';
 
 class GridViewCategoriesWidget extends StatelessWidget {
   const GridViewCategoriesWidget({Key? key}) : super(key: key);

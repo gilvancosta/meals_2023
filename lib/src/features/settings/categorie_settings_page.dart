@@ -21,12 +21,7 @@ class _SettingsScreenState extends State<SettingsPage> {
     settings = widget.settings;
   }
 
-  Widget _createSwitch(
-    String title,
-    String subtitle,
-    bool value,
-    Function(bool) onChanged,
-  ) {
+  Widget _createSwitch(String title, String subtitle, bool value, Function(bool) onChanged) {
     return SwitchListTile.adaptive(
       title: Text(title),
       subtitle: Text(subtitle),
@@ -49,14 +44,12 @@ class _SettingsScreenState extends State<SettingsPage> {
         children: [
           Container(
             padding: const EdgeInsets.all(20),
-            child: Text(
-              'Configurações',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-                color: Theme.of(context).colorScheme.primary,
-              )
-            ),
+            child: Text('Configurações',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                  color: Theme.of(context).colorScheme.primary,
+                )),
           ),
           Expanded(
             child: ListView(

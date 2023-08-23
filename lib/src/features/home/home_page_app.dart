@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals_2023/src/core/widgets/drawer_widget.dart';
-import 'package:meals_2023/src/features/home/widgets/favorite_meal_widget.dart';
-import 'package:meals_2023/src/features/home/widgets/gridview_categories_widget.dart';
+import 'package:meals_2023/src/features/fevorite/favorite_meal_page.dart';
+import 'package:meals_2023/src/features/categories/widgets/gridview_categories_widget.dart';
 
 //import 'package:meals_2023/src/features/favorite/favorite_screen.dart';
 
@@ -17,12 +17,12 @@ class _TabsScreenState extends State<HomePageApp> {
 
   final List<Map<String, Object>> _screens = [
     {
-      'title': 'Vamos Cozinhar?',
+      'title': 'Lista de Categorias',
       'screen': const GridViewCategoriesWidget(),
     },
     {
       'title': 'Meus Favoritos',
-      'screen': const FavoriteMealWidget(),
+      'screen': const FavoriteMealPage(),
     },
   ];
 
@@ -42,12 +42,15 @@ class _TabsScreenState extends State<HomePageApp> {
       ),
       drawer: const DrawerWidget(),
       body: _screens[_selectedScreenIndex]['screen'] as Widget,
+      // BottomNavigationBar
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectScreen,
         backgroundColor: Theme.of(context).colorScheme.primary,
         unselectedItemColor: Colors.white,
         selectedItemColor: Theme.of(context).colorScheme.secondary,
         currentIndex: _selectedScreenIndex,
+        //faz uma animação - tem que ajustar as cores no buttom
+        // type: BottomNavigationBarType.shifting,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.category),

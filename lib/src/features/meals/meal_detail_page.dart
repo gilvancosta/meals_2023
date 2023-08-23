@@ -16,7 +16,7 @@ class MealDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _createSectionContainer(Widget child) {
+  Widget _createSectionContainer(Widget child_Scrollbar) {
     return Container(
       width: 330,
       height: 200,
@@ -27,7 +27,7 @@ class MealDetailPage extends StatelessWidget {
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: child,
+      child: child_Scrollbar,
     );
   }
 
@@ -42,6 +42,7 @@ class MealDetailPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // imagem
             SizedBox(
               height: 300,
               width: double.infinity,
@@ -50,34 +51,29 @@ class MealDetailPage extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+
+            // lista de Ingredientes
             _createSectionTitle(context, 'Ingredientes'),
             _createSectionContainer(
-              Scrollbar(
-                //colocar direção vertical do scroll
-                controller: ScrollController(
-                  initialScrollOffset: 0,
-                  keepScrollOffset: true,
-                ),
-                thumbVisibility: true,
-                trackVisibility: true,
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: meal.ingredients.length,
-                  itemBuilder: (ctx, index) {
-                    return Card(
-                      color: Theme.of(context).colorScheme.secondary,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 5,
-                          horizontal: 10,
-                        ),
-                        child: Text(meal.ingredients[index]),
+              ListView.builder(
+                //scrollDirection: Axis.vertical,
+                itemCount: meal.ingredients.length,
+                itemBuilder: (ctx, index) {
+                  return Card(
+                    color: Theme.of(context).colorScheme.secondary,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 10,
                       ),
-                    );
-                  },
-                ),
+                      child: Text(meal.ingredients[index]),
+                    ),
+                  );
+                },
               ),
             ),
+            // passos de como fazer
+
             _createSectionTitle(context, 'Passos'),
             _createSectionContainer(ListView.builder(
               itemCount: meal.steps.length,
